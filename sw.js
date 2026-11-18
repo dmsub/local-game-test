@@ -4,7 +4,7 @@ const CACHE = "otstupy-v1";
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE).then((cache) =>
-      cache.addAll(["/manifest.webmanifest", "/icon-192.png", "/icon-512.png"]).catch(() => {})
+      cache.addAll(["./manifest.webmanifest", "./icon-192.png", "./icon-512.png"]).catch(() => {})
     )
   );
   self.skipWaiting();
@@ -27,7 +27,7 @@ self.addEventListener("fetch", (event) => {
           caches.open(CACHE).then((c) => c.put("/", copy));
           return res;
         })
-        .catch(() => caches.match(req).then((r) => r || caches.match("/")))
+        .catch(() => caches.match(req).then((r) => r || caches.match("./")))
     );
     return;
   }

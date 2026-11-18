@@ -3,7 +3,7 @@
   "short_name": "Отступы",
   "description": "Игра для начальной школы: учимся делать отступы в клетку при письме в тетради",
   "lang": "ru",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#eef4fa",
   "theme_color": "#2f9e44",
