@@ -1,0 +1,356 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 45% 96%;
+    --foreground: 210 20% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 20% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 20%;
+    --primary: 152 60% 36%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 50% 94%;
+    --secondary-foreground: 210 40% 25%;
+    --muted: 210 30% 94%;
+    --muted-foreground: 210 10% 45%;
+    --accent: 210 80% 92%;
+    --accent-foreground: 210 60% 30%;
+    --destructive: 4 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 25% 88%;
+    --input: 210 25% 88%;
+    --ring: 152 60% 36%;
+    --radius: 1rem;
+  }
+
+  body {
+    font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, hsl(45 90% 88% / 0.55), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, hsl(200 80% 88% / 0.6), transparent 55%),
+      hsl(210 45% 96%);
+    color: hsl(210 20% 20%);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-hand {
+  font-family: "Caveat", "Comic Sans MS", cursive;
+}
+
+/* ---------- buttons ---------- */
+.btn-primary {
+  @apply inline-flex min-h-[48px] cursor-pointer items-center justify-center gap-2 rounded-2xl bg-[#2f9e44] px-8 py-3 font-extrabold text-white shadow-[0_4px_0_#237032] transition-all duration-150;
+}
+.btn-primary:hover {
+  @apply bg-[#37b24d];
+}
+.btn-primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #237032;
+}
+.btn-primary:focus-visible {
+  outline: 3px solid #74c0fc;
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  @apply inline-flex min-h-[48px] cursor-pointer items-center justify-center gap-2 rounded-2xl border-2 border-[#74c0fc] bg-white px-8 py-3 font-extrabold text-[#1971c2] shadow-[0_4px_0_#a5d8ff] transition-all duration-150;
+}
+.btn-secondary:hover {
+  @apply bg-[#e7f5ff];
+}
+.btn-secondary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #a5d8ff;
+}
+.btn-secondary:focus-visible {
+  outline: 3px solid #2f9e44;
+  outline-offset: 2px;
+}
+
+.btn-chip {
+  @apply inline-flex h-11 min-w-[44px] cursor-pointer items-center justify-center gap-1.5 rounded-xl border-2 border-[#ced4da] bg-white px-3 text-sm font-extrabold text-[#495057] transition-colors duration-150;
+}
+.btn-chip:hover {
+  @apply border-[#74c0fc] bg-[#e7f5ff] text-[#1971c2];
+}
+.btn-chip:active {
+  transform: translateY(1px);
+}
+.btn-chip:focus-visible {
+  outline: 3px solid #74c0fc;
+  outline-offset: 2px;
+}
+
+.btn-hint {
+  @apply inline-flex min-h-[44px] shrink-0 cursor-pointer items-center justify-center rounded-xl bg-[#fff3bf] px-4 text-sm font-extrabold text-[#e8890c] shadow-[0_3px_0_#ffd43b] transition-all duration-150;
+}
+.btn-hint:hover {
+  @apply bg-[#ffec99];
+}
+.btn-hint:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #ffd43b;
+}
+.btn-hint:focus-visible {
+  outline: 3px solid #f5a623;
+  outline-offset: 2px;
+}
+
+/* ---------- cards ---------- */
+.paper-card {
+  @apply rounded-3xl border-2 border-[#e9ecef] bg-white;
+  box-shadow: 0 6px 0 rgba(33, 37, 41, 0.07), 0 14px 30px rgba(33, 37, 41, 0.08);
+}
+.level-btn {
+  @apply transition-transform duration-150;
+}
+.level-btn:hover {
+  transform: translateY(-3px);
+  border-color: #74c0fc;
+}
+.level-btn:focus-visible {
+  outline: 3px solid #74c0fc;
+  outline-offset: 2px;
+}
+
+.task-card {
+  @apply flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border-2 border-[#ffe08a] bg-[#fff9db] px-4 py-3;
+  box-shadow: 0 4px 0 rgba(230, 160, 30, 0.18);
+}
+
+/* ---------- task pips ---------- */
+.task-pip {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #dee2e6;
+  transition: background 200ms;
+}
+.pip-done {
+  background: #2f9e44;
+}
+.pip-now {
+  background: #f5a623;
+  animation: pip-pulse 1.1s ease-in-out infinite;
+}
+@keyframes pip-pulse {
+  50% {
+    transform: scale(1.45);
+  }
+}
+
+/* ---------- the notebook sheet ---------- */
+.sheet {
+  position: relative;
+  width: min(100%, 560px, calc((100dvh - 250px) * 0.75));
+  aspect-ratio: 18 / 24;
+  border-radius: 8px;
+  background-color: #fffefa;
+  background-image:
+    linear-gradient(to right, rgba(116, 169, 224, 0.55) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(116, 169, 224, 0.55) 1px, transparent 1px);
+  background-size: calc(100% / 18) calc(100% / 24);
+  border: 1px solid #dee2e6;
+  box-shadow:
+    0 1px 2px rgba(33, 37, 41, 0.12),
+    0 10px 24px rgba(33, 37, 41, 0.14);
+  touch-action: none;
+  overflow: hidden;
+}
+.sheet-fine {
+  cursor: none;
+}
+.sheet:focus-visible {
+  outline: 3px solid #74c0fc;
+  outline-offset: 3px;
+}
+
+.margin-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(100% / 18);
+  width: 2px;
+  background: rgba(224, 49, 49, 0.55);
+}
+
+.guide-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: rgba(255, 212, 59, 0.25);
+  border-top: 1px dashed rgba(230, 160, 30, 0.6);
+  border-bottom: 1px dashed rgba(230, 160, 30, 0.6);
+}
+
+.ink-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #4a6cf7, #1c3fd0 70%);
+  transform: translate(-50%, -50%);
+  animation: dot-in 220ms ease-out;
+}
+@keyframes dot-in {
+  from {
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+}
+@media (max-width: 480px) {
+  .ink-dot {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+.wrong-mark {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: #e03131;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  animation: wrong-in 250ms ease-out;
+}
+@keyframes wrong-in {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+}
+
+.target-pulse {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 3px solid #f5a623;
+  transform: translate(-50%, -50%);
+  animation: pulse-ring 1s ease-out infinite;
+}
+@keyframes pulse-ring {
+  from {
+    box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.5);
+  }
+  to {
+    box-shadow: 0 0 0 14px rgba(245, 166, 35, 0);
+  }
+}
+
+/* ---------- offset arrows (red, like on the memory card) ---------- */
+.arrow-line-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1.5px;
+  height: 3px;
+  background: #e03131;
+}
+.arrow-line-h::before,
+.arrow-line-h::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  border: 6px solid transparent;
+}
+.arrow-line-h::before {
+  left: -2px;
+  border-right-color: #e03131;
+}
+.arrow-line-h::after {
+  right: -2px;
+  border-left-color: #e03131;
+}
+
+.arrow-line-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1.5px;
+  width: 3px;
+  background: #e03131;
+}
+.arrow-line-v::before,
+.arrow-line-v::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  border: 6px solid transparent;
+}
+.arrow-line-v::before {
+  top: -2px;
+  border-bottom-color: #e03131;
+}
+.arrow-line-v::after {
+  bottom: -2px;
+  border-top-color: #e03131;
+}
+
+.arrow-label {
+  position: absolute;
+  top: -22px;
+  transform: translateX(-50%);
+  color: #e03131;
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+  text-shadow: 0 0 4px #fffefa, 0 0 4px #fffefa;
+}
+.arrow-label-v {
+  top: auto;
+  left: 8px;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+}
+
+.arrow-pop {
+  animation: arrow-pop 280ms ease-out;
+}
+@keyframes arrow-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+/* ---------- confetti ---------- */
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(660deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti-piece,
+  .pip-now,
+  .target-pulse {
+    animation: none;
+  }
+  .arrow-pop {
+    animation-duration: 1ms;
+  }
+}
